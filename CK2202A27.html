@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Nguyễn Hoàng Vỹ - CK2202A27</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+  <style>
+    #map {
+      height: 600px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>    
+
+//Tạo độ tượng đài
+var tuongdai = [9.176226, 105.150829];
+
+//Tạo bản đồ và tập trung vào tượng đài
+var map = L.map('map').setView(tuongdai, 18);
+
+//Thêm marker
+L.marker(tuongdai).addTo(map).bindPopup("Tượng đài Cà Mau").openPopup();
+
+//Thêm nền bản đồ từ OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	maxZoom: 19,
+      	attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+
+   L.circle(tuongdai, {
+			color: 'red',
+			fillColor: '#add0e6',
+			fillOpacity: 0.9,
+			radius: 120
+		}).addTo(map).bindPopup("Vòng tròn bán kính 120m bao quanh tượng đài Cà Mau");
+
+    polygon.bindPopup("Vòng tròn bán kính 120m bao quanh tượng đài Cà Mau");
+    map.fitBounds(polygon.getBounds());
+  </script>
+</body>
+</html>
